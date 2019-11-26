@@ -224,44 +224,22 @@ $('document').ready(function(){
 		
 		var i;
 
-		function msgLoop (i) {
-			// $("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
-			i=i+1;
-			if (i < 3)
-				$("p:nth-child("+i+")").fadeIn('slow').delay(1000).promise().done(function(){
-					if(i==10){}
-					else{
-						msgLoop(i);
-					}
-				});
-			else {
-				if (i==3 && system.iPad) $("#blank").fadeIn('fast');
-				if(system.Android||system.iPhone)
-					$("#pic2"+(i-2)).fadeIn('slow').delay(500).promise().done(function(){
-						if(i==10){}
-						else{
-							msgLoop(i);
-						}
-					});
-				else
-					$("#pic1"+(i-2)).fadeIn('slow').delay(500).promise().done(function(){
-						if(i==10){}
-						else{
-							msgLoop(i);
-						}
-					});
-			}
-				
-			// if(i==2){
-			// 	$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
-			// 		$('.cake').fadeIn('fast');
-			// 	});
-				
-			// }		
+		 function msgLoop(i) {
+            $("p:nth-child(" + i + ")").fadeOut('slow').delay(1200).promise().done(function () {
+                i = i + 1;
+                $("p:nth-child(" + i + ")").fadeIn('slow').delay(1500);
+                if (i == 50) {
+                    $("p:nth-child(49)").fadeOut('slow').promise().done(function () {
+                        $('.cake').fadeIn('fast');
+                    });
+                }
+                else {
+                    msgLoop(i);
+                }
 
-		// });
-			// body...
-		}
+            });
+            // body...
+        }
 		
 		msgLoop(0);
 		
